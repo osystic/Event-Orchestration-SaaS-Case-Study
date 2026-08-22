@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">Validation boundary</title>
+  <desc id="desc">Public diagram distinguishing validated private engineering baseline from public showcase disclosure checks.</desc>
+  <rect width="1200" height="420" fill="#ffffff"/>
+  <text x="60" y="58" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#111827">Validation Boundary</text>
+  <text x="60" y="90" font-family="Arial, sans-serif" font-size="16" fill="#4b5563">Evidence is stated only at the level supported by the retained engineering baseline.</text>
+
+  <rect x="60" y="135" width="500" height="210" rx="18" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="90" y="178" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0f172a">Private engineering baseline</text>
+  <text x="90" y="218" font-family="Arial, sans-serif" font-size="16" fill="#334155">✓ Dependency installation</text>
+  <text x="90" y="250" font-family="Arial, sans-serif" font-size="16" fill="#334155">✓ Production build</text>
+  <text x="90" y="282" font-family="Arial, sans-serif" font-size="16" fill="#334155">✓ 13 test files / 49 tests</text>
+  <text x="90" y="314" font-family="Arial, sans-serif" font-size="16" fill="#334155">✓ Governance + critical audit gate</text>
+
+  <rect x="640" y="135" width="500" height="210" rx="18" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="670" y="178" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0f172a">Public showcase validation</text>
+  <text x="670" y="218" font-family="Arial, sans-serif" font-size="16" fill="#334155">✓ Required case-study structure</text>
+  <text x="670" y="250" font-family="Arial, sans-serif" font-size="16" fill="#334155">✓ Disclosure-safe artifact classes</text>
+  <text x="670" y="282" font-family="Arial, sans-serif" font-size="16" fill="#334155">✓ Access-material / private-marker checks</text>
+  <text x="670" y="314" font-family="Arial, sans-serif" font-size="16" fill="#334155">≠ Runtime or production certification</text>
+
+  <text x="600" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#475569">OSYSTIC engineering case study — sanitized public evidence model</text>
+</svg>
