@@ -1,0 +1,118 @@
+name: Public Showcase Safety
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  public-safety:
+    name: Validate disclosure-safe OSYSTIC showcase
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate OSYSTIC showcase manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q '^repository_class: public-showcase$' .osystic/repository.yml
+          grep -q '^visibility: public$' .osystic/repository.yml
+          grep -q '^  publisher: OSYSTIC$' .osystic/repository.yml
+          grep -q '^  presentation_standard: company-engineering-case-study$' .osystic/repository.yml
+          grep -q '^  source_code_included: false$' .osystic/repository.yml
+          grep -q '^  database_source_included: false$' .osystic/repository.yml
+          grep -q '^  backend_source_included: false$' .osystic/repository.yml
+          grep -q '^  deployment_configuration_included: false$' .osystic/repository.yml
+          grep -q '^  branded_as_osystic: true$' .osystic/repository.yml
+          grep -q '^  reuse_boundary_defined: true$' .osystic/repository.yml
+          grep -q '^  credentials_included: false$' .osystic/repository.yml
+          grep -q '^  implementation_artifacts_included: false$' .osystic/repository.yml
+          grep -q '^  independent_git_history: true$' .osystic/repository.yml
+
+      - name: Confirm required public artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          required=(
+            README.md
+            case-study.md
+            SECURITY.md
+            NOTICE.md
+            assets/architecture.svg
+            assets/validation.svg
+            docs/product-capabilities.md
+            docs/technical-overview.md
+            docs/engineering-decisions.md
+            docs/validation-evidence.md
+            docs/repository-hardening.md
+            docs/lessons-learned.md
+            docs/disclosure-boundary.md
+            docs/standardization-acceptance.md
+            .osystic/repository.yml
+            .github/CODEOWNERS
+          )
+          for path in "${required[@]}"; do
+            test -f "$path" || { echo "Missing required public artifact: $path"; exit 1; }
+          done
+
+      - name: Reject confidential implementation and delivery artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git ls-files | grep -Ei '\.(ts|tsx|js|jsx|sql|json|toml|env|log|csv|tsv|parquet|zip|7z|rar|pdf|txt|docx|xlsx|xls|pptx|ps1|sh|pem|key|p12|pfx)$'; then
+            echo 'Implementation, database, deployment, data, archive, office, key, or operational artifact detected in public showcase.'
+            exit 1
+          fi
+
+      - name: Reject likely private delivery markers
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git grep -EIn \
+            -e 'lovable\.dev/projects/' \
+            -e 'private-user-images\.githubusercontent\.com' \
+            -e 'freelancer\.com/projects/' \
+            -e 'SUPABASE_DB_PASSWORD' \
+            -e 'service_role' \
+            -e 'project[_-]?ref[[:space:]]*[:=]' \
+            -- ':!.github/workflows/public-safety.yml'; then
+            echo 'Private-delivery, provider-configuration, or environment-specific marker detected.'
+            exit 1
+          fi
+
+      - name: Scan text for likely credentials or personal contact details
+        shell: bash
+        run: |
+          set -euo pipefail
+          files=()
+          while IFS= read -r -d '' path; do
+            case "$path" in
+              *.svg|*.png|*.jpg|*.jpeg|*.gif) ;;
+              *) files+=("$path") ;;
+            esac
+          done < <(git ls-files -z)
+          if ((${#files[@]})) && grep -EIn --binary-files=without-match \
+            '([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})|BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{20,}|xox[baprs]-[A-Za-z0-9-]{10,}|sk-[A-Za-z0-9_-]{20,}|(api[_-]?key|token|password|secret)[[:space:]]*[:=][[:space:]]*["'\''`]?[A-Za-z0-9_./+-]{20,}' \
+            "${files[@]}"; then
+            echo 'Potential contact detail or credential detected.'
+            exit 1
+          fi
+
+      - name: Confirm company presentation and disclosure language
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq 'OSYSTIC ENGINEERING CASE STUDY · PUBLIC SHOWCASE · SANITIZED · PORTFOLIO-SAFE' README.md
+          grep -Fq 'Company showcase classification' README.md
+          grep -Fq 'Public vs. private repository boundary' README.md
+          grep -Fq 'independent Git history' README.md
+          grep -Fq 'Copyright © 2026 OSYSTIC (PRIVATE) LIMITED. All rights reserved.' NOTICE.md
+          grep -Fq 'No open-source license is granted' NOTICE.md
+          grep -Fq 'attribute it to **OSYSTIC**' NOTICE.md
+          grep -Fq 'APPROVED PUBLIC SHOWCASE' docs/standardization-acceptance.md
