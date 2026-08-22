@@ -1,0 +1,50 @@
+schema_version: 1
+repository_class: public-showcase
+visibility: public
+lifecycle: maintenance
+project_status: retained-engineering-project
+owner_team: engineering
+data_classification: public
+client_identity_public: false
+portfolio:
+  eligible: true
+  status: approved-public-showcase
+  publisher: OSYSTIC
+  presentation_standard: company-engineering-case-study
+source:
+  type: sanitized-client-delivery
+  confidential_source_linked: false
+  source_code_included: false
+  database_source_included: false
+  backend_source_included: false
+  deployment_configuration_included: false
+  production_live_claimed: false
+  consolidation_audit_reviewed: true
+publication:
+  last_reviewed_on: 2026-08-23
+  branded_as_osystic: true
+  reuse_boundary_defined: true
+  open_source_license_granted: false
+  contact_information_included: false
+  credentials_included: false
+  private_infrastructure_included: false
+  contract_or_payment_details_included: false
+  private_conversations_included: false
+  private_customer_data_included: false
+  implementation_artifacts_included: false
+  independent_git_history: true
+claims:
+  production_uptime_claimed: false
+  audited_compliance_claimed: false
+  pci_certification_claimed: false
+  zero_technical_debt_claimed: false
+validation:
+  private_baseline_build_passed: true
+  private_baseline_tests_passed: true
+  private_baseline_test_files: 13
+  private_baseline_tests: 49
+  public_safety_ci_required: true
+delivery:
+  default_branch: main
+  ci_required: true
+  production_environment: false
