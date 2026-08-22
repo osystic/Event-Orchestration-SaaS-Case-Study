@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="title desc">
+  <title id="title">Event Orchestration SaaS architecture</title>
+  <desc id="desc">Sanitized public architecture showing web application, managed backend, serverless workflows, scheduled automation and external integration boundaries.</desc>
+  <rect width="1200" height="640" fill="#ffffff"/>
+  <text x="60" y="62" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#111827">Event Orchestration SaaS</text>
+  <text x="60" y="96" font-family="Arial, sans-serif" font-size="17" fill="#4b5563">OSYSTIC public architecture view — sanitized</text>
+
+  <rect x="60" y="150" width="300" height="350" rx="18" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="90" y="195" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#0f172a">Web Application</text>
+  <text x="90" y="228" font-family="Arial, sans-serif" font-size="16" fill="#334155">React · TypeScript · Vite</text>
+  <text x="90" y="278" font-family="Arial, sans-serif" font-size="16" fill="#334155">• Auth &amp; role-aware UX</text>
+  <text x="90" y="312" font-family="Arial, sans-serif" font-size="16" fill="#334155">• Event planning &amp; management</text>
+  <text x="90" y="346" font-family="Arial, sans-serif" font-size="16" fill="#334155">• Collaboration &amp; tasks</text>
+  <text x="90" y="380" font-family="Arial, sans-serif" font-size="16" fill="#334155">• Directories &amp; calendars</text>
+  <text x="90" y="414" font-family="Arial, sans-serif" font-size="16" fill="#334155">• Reporting &amp; invoices</text>
+  <text x="90" y="448" font-family="Arial, sans-serif" font-size="16" fill="#334155">• Marketing surfaces</text>
+
+  <rect x="450" y="150" width="300" height="350" rx="18" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="480" y="195" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#0f172a">Managed Backend</text>
+  <text x="480" y="228" font-family="Arial, sans-serif" font-size="16" fill="#334155">Supabase platform</text>
+  <text x="480" y="278" font-family="Arial, sans-serif" font-size="16" fill="#334155">• Authentication</text>
+  <text x="480" y="312" font-family="Arial, sans-serif" font-size="16" fill="#334155">• PostgreSQL persistence</text>
+  <text x="480" y="346" font-family="Arial, sans-serif" font-size="16" fill="#334155">• Row-level authorization</text>
+  <text x="480" y="380" font-family="Arial, sans-serif" font-size="16" fill="#334155">• Realtime / data APIs</text>
+  <text x="480" y="414" font-family="Arial, sans-serif" font-size="16" fill="#334155">• Serverless functions</text>
+  <text x="480" y="448" font-family="Arial, sans-serif" font-size="16" fill="#334155">• Integration boundaries</text>
+
+  <rect x="840" y="150" width="300" height="350" rx="18" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <text x="870" y="195" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#0f172a">Orchestration</text>
+  <text x="870" y="228" font-family="Arial, sans-serif" font-size="16" fill="#334155">Server-side + scheduled</text>
+  <text x="870" y="278" font-family="Arial, sans-serif" font-size="16" fill="#334155">• Roles &amp; invitations</text>
+  <text x="870" y="312" font-family="Arial, sans-serif" font-size="16" fill="#334155">• Event/task notifications</text>
+  <text x="870" y="346" font-family="Arial, sans-serif" font-size="16" fill="#334155">• Marketing dispatch</text>
+  <text x="870" y="380" font-family="Arial, sans-serif" font-size="16" fill="#334155">• Checkout / webhooks</text>
+  <text x="870" y="414" font-family="Arial, sans-serif" font-size="16" fill="#334155">• Due-soon automation</text>
+  <text x="870" y="448" font-family="Arial, sans-serif" font-size="16" fill="#334155">• Analytics refresh</text>
+
+  <path d="M360 325 H450" stroke="#64748b" stroke-width="3" fill="none"/>
+  <polygon points="450,325 438,318 438,332" fill="#64748b"/>
+  <path d="M750 325 H840" stroke="#64748b" stroke-width="3" fill="none"/>
+  <polygon points="840,325 828,318 828,332" fill="#64748b"/>
+
+  <rect x="60" y="550" width="1080" height="50" rx="12" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="600" y="582" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#334155">Confidential source, schemas, provider configuration and client data are intentionally excluded from this public view.</text>
+</svg>
