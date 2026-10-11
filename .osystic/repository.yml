@@ -48,3 +48,14 @@ delivery:
   default_branch: main
   ci_required: true
   production_environment: false
+
+project:
+  key: event-orchestration-saas
+  name: Event Orchestration SaaS
+  status: completed
+
+website:
+  eligible: true
+  status: ready-for-review
+  canonical_slug: event-orchestration-saas
+  auto_sync: true
